@@ -1,0 +1,8 @@
+---
+  - name: Reboot all ansible-target hosts
+    hosts: no_target
+    become: true
+  
+    roles:
+      - reboot
+

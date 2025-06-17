@@ -1,0 +1,9 @@
+---
+  - name: Install app
+    hosts: no_target
+    become: true
+    roles:
+      - install_app
+      - reboot
+
+  

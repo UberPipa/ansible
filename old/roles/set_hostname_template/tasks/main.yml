@@ -1,0 +1,14 @@
+---
+  - name: Configure hostname
+    ansible.builtin.hostname:
+      name: "template"
+  
+  - name: Set correct hostname entry in /etc/hosts
+    ansible.builtin.lineinfile:
+      path: /etc/hosts
+      regexp: '^127\.0\.1\.1'
+      line: '127.0.0.2     template'
+      owner: root
+      group: root
+      mode: 0644
+      insertafter: EOF

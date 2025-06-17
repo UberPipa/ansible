@@ -1,0 +1,6 @@
+---
+- name: "Poweroff the machine"
+  command: shutdown -h now
+  async: 1
+  poll: 0
+  ignore_errors: true

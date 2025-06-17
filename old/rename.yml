@@ -1,0 +1,9 @@
+---
+  - name: Set hostname
+    hosts: no_target
+    become: true
+    roles:
+      - set_hostname
+      - reboot
+
+  
