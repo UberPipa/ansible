@@ -1,0 +1,8 @@
+---
+  - name: Reboot host
+    ansible.builtin.reboot:
+
+  - name: "Waiting for availability (120 сек)"
+    wait_for_connection:
+      delay: 5      
+      timeout: 120   
