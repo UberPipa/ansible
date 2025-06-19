@@ -1,0 +1,6 @@
+---
+  - name: Reboot all hosts
+    hosts: all
+    become: true
+    roles:
+      - poweroff

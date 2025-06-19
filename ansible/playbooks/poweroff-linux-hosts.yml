@@ -1,0 +1,7 @@
+---
+  - name: Reboot all hosts
+    hosts: no_alltarget
+    become: true
+    roles:
+      - poweroff
+
