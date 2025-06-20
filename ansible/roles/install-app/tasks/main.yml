@@ -1,0 +1,3 @@
+---
+- name: Include install-app.yml
+  import_tasks: install-app.yml

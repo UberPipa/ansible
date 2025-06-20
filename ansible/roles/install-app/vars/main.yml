@@ -1,0 +1,7 @@
+---
+  packages:
+    - ansible
+    - sshpass
+    - qemu-guest-agent
+    - xrdp 
+    - openssh-server
