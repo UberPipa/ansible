@@ -1,13 +1,13 @@
 ---
   - name: Configure hostname
     ansible.builtin.hostname:
-      name: "template"
+      name: "{{ hostname | default(inventory_hostname) }}"
   
   - name: Set correct hostname entry in /etc/hosts
     ansible.builtin.lineinfile:
       path: /etc/hosts
       regexp: '^127\.0\.1\.1'
-      line: '127.0.0.2     template'
+      line: '127.0.0.2 {{ hostname | default(inventory_hostname) }}'
       owner: root
       group: root
       mode: 0644

@@ -1,3 +1,3 @@
 ---
-- name: Include reboot_host.yml
-  import_tasks: reboot_host.yml
+- name: Include reboot-host.yml
+  import_tasks: reboot-host.yml

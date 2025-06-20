@@ -1,9 +1,9 @@
 ---
   - name: Set hostname
-    hosts: test_group
+    hosts: all
     become: true
     roles:
-      - set_hostname_template
+      - set-hostname
       - reboot
 
   
