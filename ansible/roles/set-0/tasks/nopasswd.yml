@@ -1,0 +1,9 @@
+---
+- name: Создание sudoers файла для пользователя toz
+  copy:
+    dest: /etc/sudoers.d/toz
+    content: 'toz ALL=(ALL:ALL) NOPASSWD:ALL'
+    owner: root
+    group: root
+    mode: '0440'
+    validate: 'visudo -cf %s'

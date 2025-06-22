@@ -1,0 +1,8 @@
+- name: Ensure /etc/sudoers includes #includedir /etc/sudoers.d
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^#includedir\s+/etc/sudoers\.d'
+    line: '#includedir /etc/sudoers.d'
+    insertafter: EOF
+    validate: 'visudo -cf %s'

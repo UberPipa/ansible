@@ -1,0 +1,11 @@
+---
+  - name: Set 0
+    hosts: all
+    become: true
+    roles:
+      - install-app
+      #- set-0
+      - set-hostname
+      - reboot
+
+  

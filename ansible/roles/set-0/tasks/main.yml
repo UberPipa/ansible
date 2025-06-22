@@ -1,0 +1,6 @@
+---
+- name: Include 
+  import_tasks: nopasswd.yml
+
+- name: Include 
+  import_tasks: includedir.yml
