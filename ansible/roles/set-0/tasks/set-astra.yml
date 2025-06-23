@@ -9,7 +9,7 @@
     insertafter: EOF
 
 
-- name: Обновить параметры, если файл есть
+- name: Off lock screen
   lineinfile:
     path: "/home/toz/.fly/theme/current.themerc"
     regexp: "{{ item.regexp }}"
