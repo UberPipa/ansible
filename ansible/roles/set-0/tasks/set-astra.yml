@@ -1,0 +1,23 @@
+---
+- name: Astra Linux — change /etc/sudoers
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^toz\s+ALL=\(ALL:ALL\)\s+NOPASSWD:ALL'
+    line: 'toz ALL=(ALL:ALL) NOPASSWD:ALL'
+    validate: 'visudo -cf %s'
+    insertafter: EOF
+
+
+- name: Обновить параметры, если файл есть
+  lineinfile:
+    path: "/home/toz/.fly/theme/current.themerc"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backrefs: true
+  with_items:
+    - { regexp: '^LockerOnDPMS=.*',     line: 'LockerOnDPMS=false' }
+    - { regexp: '^LockerOnLid=.*',      line: 'LockerOnLid=false' }
+    - { regexp: '^LockerOnSleep=.*',    line: 'LockerOnSleep=false' }
+    - { regexp: '^LockerOnSwitch=.*',   line: 'LockerOnSwitch=false' }
+    - { regexp: '^ScreenSaverDelay=.*', line: 'ScreenSaverDelay=0' }

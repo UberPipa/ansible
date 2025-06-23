@@ -1,6 +1,8 @@
 ---
 - name: Include 
-  import_tasks: nopasswd.yml
+  import_tasks: set-astra.yml
+  when: ansible_distribution == "Astra Linux"
 
 - name: Include 
-  import_tasks: includedir.yml
+  import_tasks: set-mint.yml
+  when: ansible_distribution == "Linux Mint"

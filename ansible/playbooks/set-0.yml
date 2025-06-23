@@ -4,7 +4,7 @@
     become: true
     roles:
       - install-app
-      #- set-0
+      - set-0
       - set-hostname
       - reboot
 
