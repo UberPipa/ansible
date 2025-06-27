@@ -14,7 +14,6 @@
 - name: update (Astra)
   apt:
     update_cache: yes
-  ignore_errors: true
 
 - name: dist-upgrade (Astra)
   apt:

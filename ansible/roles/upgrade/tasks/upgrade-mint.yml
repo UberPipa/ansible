@@ -2,7 +2,6 @@
 - name: upgrade (Mint)
   apt:
     update_cache: yes
-  ignore_errors: true
 
 - name: upgrade (Mint)
   apt:
