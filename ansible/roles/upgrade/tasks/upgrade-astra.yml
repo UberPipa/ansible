@@ -11,10 +11,10 @@
     regexp: '^#(deb https://download\.astralinux\.ru/.*)'
     replace: '\1'
 
-- name: upgrade (Astra)
+- name: update (Astra)
   apt:
     update_cache: yes
-    cache_valid_time: 3600
+  ignore_errors: true
 
 - name: dist-upgrade (Astra)
   apt:
