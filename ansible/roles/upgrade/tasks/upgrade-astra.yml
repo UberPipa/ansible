@@ -1,4 +1,16 @@
 ---
+- name: Отключить cdrom-репозиторий
+  replace:
+    path: /etc/apt/sources.list
+    regexp: '^deb cdrom:'
+    replace: '# \g<0>'
+
+- name: Раскомментировать основные репозитории Astra Linux
+  replace:
+    path: /etc/apt/sources.list
+    regexp: '^#(deb https://download\.astralinux\.ru/.*)'
+    replace: '\1'
+
 - name: upgrade astra
   apt:
     update_cache: yes
