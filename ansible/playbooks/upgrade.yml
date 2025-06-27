@@ -1,0 +1,7 @@
+---
+  - name: Update and upgrade
+    hosts: all
+    become: true
+    
+    roles:
+      - upgrade

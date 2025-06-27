@@ -4,6 +4,7 @@
     become: true
     roles:
       - install-app
+      - upgrade
       - set-0
       - set-hostname
       - reboot

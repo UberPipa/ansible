@@ -1,0 +1,8 @@
+---
+- name: Include 
+  import_tasks: upgrade-astra.yml
+  when: ansible_distribution == "Astra Linux"
+
+- name: Include 
+  import_tasks: upgrade-mint.yml
+  when: ansible_distribution == "Linux Mint"
