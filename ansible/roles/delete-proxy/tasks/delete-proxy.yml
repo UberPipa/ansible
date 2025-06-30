@@ -1,0 +1,10 @@
+---
+- name: Закомментировать proxy-переменные в /etc/environment
+  replace:
+    path: /etc/environment
+    regexp: '^{{ item }}='
+    replace: '# {{ item }}='
+  loop:
+    - http_proxy
+    - https_proxy
+    - no_proxy

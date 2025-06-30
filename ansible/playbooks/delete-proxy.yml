@@ -1,0 +1,8 @@
+---
+- name: delete proxy
+  hosts: all
+  become: true
+
+  roles:
+  - delete-proxy
+  - reboot
