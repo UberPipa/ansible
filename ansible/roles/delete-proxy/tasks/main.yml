@@ -1,0 +1,3 @@
+---
+- name: Include 
+  import_tasks: delete-proxy.yml
