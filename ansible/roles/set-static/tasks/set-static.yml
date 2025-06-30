@@ -1,0 +1,41 @@
+- name: Gather facts
+  ansible.builtin.setup:
+
+- name: Get primary network interface
+  command: ip route get 1.1.1.1
+  register: route_info
+
+- name: Extract interface name
+  set_fact:
+    primary_interface: "{{ route_info.stdout | regex_search('dev (\\w+)', '\\1') }}"
+
+- name: Get current IP info
+  command: ip -4 addr show dev {{ primary_interface }}
+  register: ip_info
+
+- name: Set current IP address and netmask
+  set_fact:
+    current_ip: "{{ ip_info.stdout | regex_search('inet (\\d+\\.\\d+\\.\\d+\\.\\d+)/(\\d+)', '\\1') }}"
+    current_netmask_bits: "{{ ip_info.stdout | regex_search('inet (\\d+\\.\\d+\\.\\d+\\.\\d+)/(\\d+)', '\\2') | int }}"
+    current_netmask: "{{ (2 ** 32 - 2 ** (32 - current_netmask_bits)) | int | ipaddr('netmask') }}"
+
+- name: Get current gateway
+  command: ip route | grep default
+  register: gw_info
+
+- name: Set gateway
+  set_fact:
+    current_gw: "{{ gw_info.stdout | regex_search('default via (\\d+\\.\\d+\\.\\d+\\.\\d+)', '\\1') }}"
+
+- name: Apply static network config
+  template:
+    src: interfaces.j2
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Restart networking
+  ansible.builtin.systemd:
+    name: networking
+    state: restarted

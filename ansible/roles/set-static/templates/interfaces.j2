@@ -1,0 +1,10 @@
+# This file is managed by Ansible
+
+auto lo
+iface lo inet loopback
+
+auto {{ primary_interface }}
+iface {{ primary_interface }} inet static
+    address {{ current_ip }}
+    netmask {{ current_netmask }}
+    gateway {{ current_gw }}
