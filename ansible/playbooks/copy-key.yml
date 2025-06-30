@@ -1,0 +1,6 @@
+- name: delete proxy
+  hosts: all
+  become: true
+
+  roles:
+  - copy-key

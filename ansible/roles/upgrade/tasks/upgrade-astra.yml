@@ -11,6 +11,18 @@
     regexp: '^#(deb https://download\.astralinux\.ru/.*)'
     replace: '\1'
 
+- name: Закомментировать строки с repository-devel
+  replace:
+    path: /etc/apt/sources.list
+    regexp: '^deb .*repository-devel.*'
+    replace: '# \g<0>'
+
+- name: Закомментировать строки с uu/last
+  replace:
+    path: /etc/apt/sources.list
+    regexp: '^deb .*/uu/last/.*'
+    replace: '# \g<0>'
+
 - name: update (Astra)
   apt:
     update_cache: yes
