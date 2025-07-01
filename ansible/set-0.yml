@@ -7,6 +7,6 @@
       - install-app
       - set-0
       - set-hostname
-      - reboot
+      - poweroff
 
   
