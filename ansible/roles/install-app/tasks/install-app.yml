@@ -1,4 +1,8 @@
 ---
+- name: update (Astra)
+  apt:
+    update_cache: yes
+
 - name: installing applications
   package:
     name: "{{ packages }}"

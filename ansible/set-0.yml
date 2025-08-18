@@ -3,7 +3,7 @@
     hosts: all
     become: true
     roles:
-      - upgrade
+      #- upgrade
       - install-app
       - set-0
       - set-hostname
